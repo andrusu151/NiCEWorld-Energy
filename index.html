@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NiCE Energy and Utilities — Cheaper, greener energy for your home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green:       #00c48c;
+      --green-dark:  #00a376;
+      --green-pale:  #e6faf4;
+      --green-mid:   #d0f5ea;
+      --plum:        #3d1f6e;
+      --plum-light:  #6b4fa0;
+      --sky:         #e8f4fd;
+      --sky-mid:     #bde4f9;
+      --amber:       #f59e0b;
+      --amber-pale:  #fef3c7;
+      --white:       #ffffff;
+      --off:         #f7f9fc;
+      --ink:         #111827;
+      --body:        #374151;
+      --muted:       #6b7280;
+      --border:      #e5e7eb;
+      --sans:        'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--ink); background: #fff; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-label { font-size: 13px; font-weight: 700; color: var(--green-dark); letter-spacing: 0.02em; }
+    .nav-divider { width: 1.5px; height: 20px; background: var(--border); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--body); text-decoration: none; transition: color .15s; }
+    .nav-links a:hover { color: var(--green-dark); }
+    .nav-links .nav-cta {
+      background: var(--green);
+      color: white !important;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background .15s, transform .1s !important;
+    }
+    .nav-links .nav-cta:hover { background: var(--green-dark) !important; transform: translateY(-1px); }
+    .nav-support { font-size: 13px; color: var(--muted); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--plum);
+      padding: 56px 48px 116px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 100%;
+      min-height: 558px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle dot texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 6px 14px 6px 8px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+    .award-star {
+      background: var(--amber);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    .award-text { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.85); }
+
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--green); }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      max-width: 440px;
+      margin-bottom: 36px;
+    }
+
+    /* Quote box */
+    .quote-box {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      max-width: 400px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .quote-box label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .quote-box-row {
+      display: flex;
+      gap: 8px;
+    }
+    .quote-input {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: var(--sans);
+      color: var(--ink);
+      outline: none;
+      transition: border-color .15s;
+    }
+    .quote-input:focus { border-color: var(--green); }
+    .quote-input::placeholder { color: var(--muted); }
+    .quote-btn {
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--sans);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s;
+    }
+    .quote-btn:hover { background: var(--green-dark); }
+    .quote-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* Hero right — energy flow diagram */
+    .hero-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 0 40px 0 0;
+    }
+    .energy-diagram {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+    }
+    .flow-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 24px rgba(0,196,140,0.15));
+    }
+    .diagram-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: absolute;
+      bottom: 16px;
+      right: 0;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      padding: 5px 12px 5px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      white-space: nowrap;
+    }
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: chip-pulse 2s ease-in-out infinite;
+    }
+    @keyframes chip-pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+    /* Floating trust cards (legacy, hidden) */
+    .hero-trust {
+      position: absolute;
+      top: 24px;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 200px;
+    }
+    .trust-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .trust-pill-icon { font-size: 22px; flex-shrink: 0; }
+    .trust-pill-val { font-size: 16px; font-weight: 700; color: white; }
+    .trust-pill-lbl { font-size: 11px; color: rgba(255,255,255,0.6); }
+
+    /* House illustration (SVG) */
+    .hero-house {
+      width: 100%;
+      max-width: 340px;
+      margin-bottom: 0;
+      align-self: flex-end;
+    }
+
+    /* ── TRUSTED STRIP ── */
+    .trust-strip {
+      background: var(--green-pale);
+      border-bottom: 1px solid var(--green-mid);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+    .trust-item-icon { font-size: 18px; }
+
+    /* ── TARIFFS ── */
+    .tariffs-section {
+      padding: 56px 40px;
+      background: var(--white);
+    }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+    .section-headline {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    .tariffs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 900px;
+    }
+
+    .tariff-card {
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .tariff-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border-color: rgba(0,196,140,0.3);
+    }
+    .tariff-card.featured {
+      border-color: var(--green);
+      box-shadow: 0 8px 32px rgba(0,196,140,0.15);
+    }
+
+    .tariff-header {
+      padding: 20px 24px 16px;
+      background: var(--off);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .tariff-card.featured .tariff-header {
+      background: var(--plum);
+    }
+    .tariff-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .tariff-card.featured .tariff-name { color: white; }
+    .tariff-type {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .tariff-card.featured .tariff-type { color: rgba(255,255,255,0.6); }
+    .tariff-badge {
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .tariff-body {
+      padding: 24px;
+    }
+    .tariff-price {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .tariff-price sup { font-size: 20px; vertical-align: super; font-weight: 600; }
+    .tariff-price-note { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+
+    .tariff-features { list-style: none; margin-bottom: 24px; }
+    .tariff-features li {
+      font-size: 14px;
+      color: var(--body);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tariff-features li:last-child { border-bottom: none; }
+    .tariff-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .tariff-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1.5px solid var(--green);
+      color: var(--green-dark);
+      background: transparent;
+      transition: background .15s, color .15s;
+    }
+    .tariff-cta:hover, .tariff-card.featured .tariff-cta {
+      background: var(--green);
+      color: white;
+    }
+    .tariff-card.featured .tariff-cta:hover { background: var(--green-dark); }
+
+    /* ── GREEN ENERGY STRIP ── */
+    .green-strip {
+      background: var(--plum);
+      padding: 64px 40px;
+    }
+    .green-strip-inner {
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .green-strip h2 {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .green-strip h2 span { color: var(--green); }
+    .green-strip p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .btn-green {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-green:hover { background: var(--green-dark); }
+
+    /* Stat grid */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-cell {
+      background: rgba(255,255,255,0.06);
+      padding: 28px 24px;
+    }
+    .stat-num {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-num span { font-size: 20px; }
+    .stat-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* ── SERVICES ── */
+    .services-section {
+      background: var(--off);
+      padding: 72px 40px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 900px;
+      margin-top: 48px;
+    }
+    .service-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .2s, transform .2s;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .service-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+    .service-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .service-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .service-arrow {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+
+    /* ── HOW TO SWITCH ── */
+    .switch-section {
+      background: white;
+      padding: 72px 40px;
+    }
+    .switch-steps {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin-top: 48px;
+      position: relative;
+    }
+    .switch-steps::before { display: none; }
+    .switch-step {
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .switch-step h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .switch-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-section {
+      background: var(--off);
+      padding: 72px 40px;
+    }
+    .reviews-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      max-width: 1080px;
+      margin-bottom: 36px;
+    }
+    .trustpilot-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 18px;
+    }
+    .tp-stars { color: #00b67a; font-size: 20px; letter-spacing: 2px; }
+    .tp-score { font-size: 22px; font-weight: 800; color: var(--ink); }
+    .tp-label { font-size: 12px; color: var(--muted); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 900px;
+    }
+    .review-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .review-stars { color: #00b67a; font-size: 14px; margin-bottom: 10px; }
+    .review-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .review-body { font-size: 13px; color: var(--body); line-height: 1.65; margin-bottom: 16px; }
+    .review-author { font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; }
+    .review-author strong { color: var(--body); }
+
+    /* ── SMART HOME ── */
+    .smart-section {
+      background: var(--sky);
+      padding: 72px 40px;
+    }
+    .smart-inner {
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .smart-inner h2 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .smart-inner h2 span { color: var(--plum); }
+    .smart-inner > div > p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .smart-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .sf-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .sf-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--plum);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .sf-text h4 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+    .sf-text p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* App mockup */
+    .app-mockup {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(61,31,110,0.15);
+      border: 1px solid var(--border);
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    .app-topbar {
+      background: var(--plum);
+      padding: 18px 20px 14px;
+    }
+    .app-topbar-title { font-size: 15px; font-weight: 700; color: white; }
+    .app-topbar-sub { font-size: 11px; color: rgba(255,255,255,0.6); }
+    .app-body { padding: 20px; }
+    .app-usage-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .app-usage-num { font-size: 36px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+    .app-usage-unit { font-size: 14px; font-weight: 400; color: var(--muted); }
+    .app-saving { background: var(--green-pale); border-radius: 8px; padding: 10px 14px; margin: 14px 0; display: flex; align-items: center; gap: 8px; }
+    .app-saving-icon { font-size: 18px; }
+    .app-saving-text { font-size: 12px; font-weight: 600; color: var(--green-dark); }
+    .app-bars { display: flex; align-items: flex-end; gap: 6px; height: 60px; margin-top: 14px; }
+    .app-bar { flex: 1; border-radius: 4px 4px 0 0; background: var(--green-mid); }
+    .app-bar.active { background: var(--green); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--green);
+      padding: 72px 40px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 44px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .cta-section p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 32px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-box {
+      display: inline-flex;
+      gap: 8px;
+      background: white;
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    .cta-input {
+      border: none;
+      outline: none;
+      font-size: 15px;
+      font-family: var(--sans);
+      color: var(--ink);
+      padding: 10px 16px;
+      width: 220px;
+      border-radius: 6px;
+    }
+    .cta-input::placeholder { color: var(--muted); }
+    .cta-submit {
+      background: var(--plum);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--sans);
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .cta-submit:hover { background: var(--plum-light); }
+    .cta-note { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 14px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 56px 40px 28px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 260px;
+      margin-top: 14px;
+    }
+    .footer-ofgem {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      margin-top: 14px;
+      letter-spacing: 0.04em;
+    }
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .footer-col ul a:hover { color: var(--green); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+
+
+
+
+
+
+
+
+ 50%{opacity:0.3;} }
+
+
+
+
+
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1280px) {
+  
+    }
+    @media (max-width: 1024px) {
+      .page-layout { flex-direction: column; height: auto; overflow: visible; }
+      .page-main { overflow-y: visible; }
+  
+      .tariffs-grid, .services-grid { grid-template-columns: 1fr 1fr; }
+      .switch-steps { grid-template-columns: 1fr 1fr; }
+      .switch-steps::before { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 48px 20px 40px; }
+      .hero h1 { font-size: 32px; }
+      .tariffs-section, .services-section, .switch-section, .reviews-section,
+      .smart-section, .green-strip, .cta-section { padding: 48px 20px; }
+      .tariffs-grid, .services-grid, .switch-steps, .reviews-grid { grid-template-columns: 1fr; }
+      .green-strip-inner, .smart-inner { grid-template-columns: 1fr; gap: 40px; }
+      .section-headline, .green-strip h2, .smart-inner h2 { font-size: 28px; }
+      .cta-section h2 { font-size: 28px; }
+      .cta-box { flex-direction: column; width: 100%; max-width: 320px; }
+      .cta-input { width: 100%; }
+      .trust-strip { gap: 20px; padding: 16px 20px; }
+      footer { padding: 40px 20px 20px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 864.3 400.99" style="height:22px;width:auto;">
+      <path fill="#3694fd" d="M333.62,62.55c-18.86-1.19-34.4,14.35-33.21,33.21.98,15.55,13.6,28.17,29.15,29.15,18.86,1.19,34.4-14.35,33.21-33.21-.98-15.55-13.6-28.17-29.15-29.15Z"/>
+      <path fill="#111827" d="M265.33,82.11h-50.27c-1.66,0-3,1.34-3,3v147.41c0,1.02-1.35,1.39-1.86.5L123.2,83.61c-.54-.92-1.52-1.49-2.59-1.49h-55.12c-1.66,0-3,1.34-3,3v244.74c0,1.66,1.34,3,3,3h50.27c1.66,0,3-1.34,3-3v-146.82c0-1.02,1.35-1.39,1.86-.5l87,148.84c.54.92,1.52,1.49,2.59,1.49h55.13c1.66,0,3-1.34,3-3V85.11c0-1.66-1.34-3-3-3Z"/>
+      <path fill="#111827" d="M353.85,141.37c-7.03,1.51-14.5,2.33-22.27,2.33s-15.24-.82-22.27-2.33c-1.87-.4-3.62,1.02-3.62,2.93v185.55c0,1.66,1.34,3,3,3h45.78c1.66,0,3-1.34,3-3v-185.55c0-1.91-1.76-3.33-3.62-2.93Z"/>
+      <path fill="#111827" d="M798.81,286.94h-104.66c-.55,0-1-.45-1-1v-54.5c0-.55.45-1,1-1h85.42c1.66,0,3-1.34,3-3v-39.91c0-1.66-1.34-3-3-3h-85.42c-.55,0-1-.45-1-1v-54.5c0-.55.45-1,1-1h104.66c1.66,0,3-1.34,3-3v-39.91c0-1.66-1.34-3-3-3h-158.92c-1.66,0-3,1.34-3,3v244.74c0,1.66,1.34,3,3,3h158.92c1.66,0,3-1.34,3-3v-39.91c0-1.66-1.34-3-3-3Z"/>
+      <path fill="#111827" d="M601.92,239.96h-53.14c-1.44,0-2.69,1.02-2.95,2.43-2.46,13.53-7.09,24.33-13.89,32.37-7.65,9.07-18.49,13.6-32.5,13.6-10.78,0-20.05-3.29-27.81-9.89-7.76-6.59-13.74-15.89-17.95-27.9-4.2-12.01-6.31-26.25-6.31-42.73,0-16.01,1.99-30.13,5.98-42.38,3.99-12.24,9.91-21.77,17.79-28.6,7.87-6.83,17.41-10.24,28.62-10.24,12.72,0,23.07,4.24,31.04,12.71,6.99,7.43,11.82,17.39,14.51,29.87.29,1.37,1.52,2.34,2.92,2.34h52.94c1.88,0,3.29-1.71,2.95-3.56-5.27-28.79-16.07-51.06-32.42-66.79-17.14-16.48-41.12-24.72-71.95-24.72-22.42,0-41.93,5.42-58.53,16.24-16.6,10.83-29.38,26.08-38.32,45.73-8.95,19.66-13.42,42.79-13.42,69.39s4.69,51.03,14.07,70.45c9.38,19.42,22.31,34.32,38.81,44.67,16.49,10.36,35.3,15.54,56.43,15.54,20.48,0,38.05-3.88,52.71-11.65,14.66-7.77,26.52-19.01,35.57-33.73,8.49-13.79,14.42-30.34,17.79-49.63.32-1.85-1.08-3.54-2.95-3.54Z"/>
+    </svg>
+    <div class="nav-divider"></div>
+    <span class="nav-label">Energy &amp; Utilities</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Tariffs</a></li>
+    <li><a href="#">Heat pumps</a></li>
+    <li><a href="#">Solar &amp; battery</a></li>
+    <li><a href="#">Electric vehicles</a></li>
+    <li><a href="#">Business</a></li>
+    <li><a href="#" class="nav-cta">Get a quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-award">
+      <span class="award-star">★ 4.8</span>
+      <span class="award-text">Which? Recommended Energy Provider 2026</span>
+    </div>
+    <h1>Cheaper, greener energy<br>for your <span>home.</span></h1>
+    <p class="hero-sub">100% renewable electricity. Always priced below the Ofgem price cap. Switch in minutes — we handle everything else.</p>
+    <div class="quote-box">
+      <label for="postcode">Enter your postcode to get a quote</label>
+      <div class="quote-box-row">
+        <input class="quote-input" id="postcode" type="text" placeholder="e.g. SW1A 1AA" maxlength="8"/>
+        <button class="quote-btn">Get a quote</button>
+      </div>
+      <p class="quote-note">No credit check required &nbsp;·&nbsp; Switch in under 5 minutes</p>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="energy-diagram">
+
+      <!-- Animated SVG energy flow diagram -->
+      <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
+        <defs>
+          <!-- Green flow gradient -->
+          <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00c48c" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#00c48c" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#00c48c" stop-opacity="0"/>
+          </linearGradient>
+          <!-- Vertical flow gradient -->
+          <linearGradient id="flowGradV" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#00c48c" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#00c48c" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#00c48c" stop-opacity="0"/>
+          </linearGradient>
+          <!-- Glow filter -->
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="glow-strong">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <!-- Dash pattern for flow lines -->
+          <marker id="arrowGreen" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#00c48c" opacity="0.6"/>
+          </marker>
+        </defs>
+
+        <!-- ── BACKGROUND NODE GLOW ── -->
+        <circle cx="210" cy="185" r="70" fill="rgba(0,196,140,0.04)"/>
+        <circle cx="210" cy="185" r="110" fill="rgba(0,196,140,0.02)"/>
+
+        <!-- ── CONNECTOR LINES ── -->
+        <!-- Solar → Grid -->
+        <line x1="90" y1="75" x2="185" y2="165" stroke="rgba(0,196,140,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <!-- Wind → Grid -->
+        <line x1="330" y1="75" x2="235" y2="165" stroke="rgba(0,196,140,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <!-- Grid → Home -->
+        <line x1="185" y1="210" x2="90" y2="300" stroke="rgba(0,196,140,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <!-- Grid → EV -->
+        <line x1="235" y1="210" x2="330" y2="300" stroke="rgba(0,196,140,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+        <!-- ── ANIMATED FLOW DOTS ── -->
+        <!-- Solar → Grid -->
+        <circle r="4" fill="#f59e0b" filter="url(#glow)" opacity="0.9">
+          <animateMotion dur="2.2s" repeatCount="indefinite" begin="0s">
+            <mpath href="#path-solar-grid"/>
+          </animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" dur="2.2s" repeatCount="indefinite"/>
+        </circle>
+        <path id="path-solar-grid" d="M90,75 L185,165" fill="none"/>
+
+        <!-- Wind → Grid -->
+        <circle r="4" fill="#3694fc" filter="url(#glow)" opacity="0.9">
+          <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.5s">
+            <mpath href="#path-wind-grid"/>
+          </animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" dur="2.8s" repeatCount="indefinite" begin="0.5s"/>
+        </circle>
+        <path id="path-wind-grid" d="M330,75 L235,165" fill="none"/>
+
+        <!-- Grid → Home -->
+        <circle r="3.5" fill="#00c48c" filter="url(#glow)" opacity="0.9">
+          <animateMotion dur="2s" repeatCount="indefinite" begin="0.9s">
+            <mpath href="#path-grid-home"/>
+          </animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.9s"/>
+        </circle>
+        <path id="path-grid-home" d="M185,210 L90,300" fill="none"/>
+
+        <!-- Grid → EV -->
+        <circle r="3.5" fill="#00c48c" filter="url(#glow)" opacity="0.9">
+          <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.2s">
+            <mpath href="#path-grid-ev"/>
+          </animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="0.2s"/>
+        </circle>
+        <path id="path-grid-ev" d="M235,210 L330,300" fill="none"/>
+
+        <!-- ── SOLAR NODE (top-left) ── -->
+        <g transform="translate(90,75)">
+          <circle r="34" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" stroke-width="1.5"/>
+          <circle r="34" fill="none" stroke="rgba(245,158,11,0.15)" stroke-width="1">
+            <animate attributeName="r" values="34;42;34" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="1;0;1" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="14" fill="#f59e0b" filter="url(#glow)"/>
+          <line x1="0" y1="-20" x2="0" y2="-24" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <line x1="0" y1="20" x2="0" y2="24" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <line x1="20" y1="0" x2="24" y2="0" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <line x1="-20" y1="0" x2="-24" y2="0" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <line x1="14" y1="-14" x2="17" y2="-17" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <line x1="-14" y1="14" x2="-17" y2="17" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <line x1="14" y1="14" x2="17" y2="17" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <line x1="-14" y1="-14" x2="-17" y2="-17" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <text y="50" text-anchor="middle" font-size="11" font-family="Inter,sans-serif" font-weight="600" fill="rgba(255,255,255,0.7)">Solar</text>
+        </g>
+
+        <!-- ── WIND NODE (top-right) ── -->
+        <g transform="translate(330,75)">
+          <circle r="34" fill="rgba(54,148,252,0.1)" stroke="rgba(54,148,252,0.3)" stroke-width="1.5"/>
+          <circle r="34" fill="none" stroke="rgba(54,148,252,0.15)" stroke-width="1">
+            <animate attributeName="r" values="34;44;34" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="1;0;1" dur="4s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="4" fill="#3694fc"/>
+          <path d="M0,-4 Q8,-18 0,-26 Q-8,-18 0,-4" fill="#3694fc" opacity="0.8">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+          </path>
+          <path d="M0,-4 Q8,-18 0,-26 Q-8,-18 0,-4" fill="#3694fc" opacity="0.8" transform="rotate(120)">
+            <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="3s" repeatCount="indefinite"/>
+          </path>
+          <path d="M0,-4 Q8,-18 0,-26 Q-8,-18 0,-4" fill="#3694fc" opacity="0.8" transform="rotate(240)">
+            <animateTransform attributeName="transform" type="rotate" from="240" to="600" dur="3s" repeatCount="indefinite"/>
+          </path>
+          <text y="50" text-anchor="middle" font-size="11" font-family="Inter,sans-serif" font-weight="600" fill="rgba(255,255,255,0.7)">Wind</text>
+        </g>
+
+        <!-- ── CENTRAL SMART GRID NODE ── -->
+        <g transform="translate(210,188)">
+          <circle r="48" fill="none" stroke="rgba(0,196,140,0.15)" stroke-width="1">
+            <animate attributeName="r" values="48;60;48" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0;0.8" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="42" fill="rgba(0,196,140,0.1)" stroke="rgba(0,196,140,0.4)" stroke-width="1.5"/>
+          <path d="M4,-18 L-6,2 L2,2 L-4,18 L14,-4 L6,-4 Z" fill="#00c48c" filter="url(#glow-strong)"/>
+          <text y="60" text-anchor="middle" font-size="12" font-family="Inter,sans-serif" font-weight="700" fill="white">Smart Grid</text>
+        </g>
+
+        <!-- ── HOME NODE (bottom-left) ── -->
+        <g transform="translate(90,300)">
+          <circle r="30" fill="rgba(0,196,140,0.1)" stroke="rgba(0,196,140,0.3)" stroke-width="1.5"/>
+          <path d="M0,-16 L-14,0 L-10,0 L-10,12 L10,12 L10,0 L14,0 Z" fill="rgba(0,196,140,0.8)"/>
+          <rect x="-4" y="4" width="8" height="8" rx="1" fill="rgba(255,255,255,0.5)"/>
+          <text y="46" text-anchor="middle" font-size="11" font-family="Inter,sans-serif" font-weight="600" fill="rgba(255,255,255,0.7)">Your Home</text>
+        </g>
+
+        <!-- ── EV NODE (bottom-right) ── -->
+        <g transform="translate(330,300)">
+          <circle r="30" fill="rgba(54,148,252,0.1)" stroke="rgba(54,148,252,0.3)" stroke-width="1.5"/>
+          <path d="M-14,4 L-10,-6 L10,-6 L14,4 Z" fill="rgba(54,148,252,0.7)"/>
+          <rect x="-14" y="4" width="28" height="8" rx="2" fill="rgba(54,148,252,0.8)"/>
+          <circle cx="-8" cy="13" r="4" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="8" cy="13" r="4" fill="rgba(255,255,255,0.4)"/>
+          <path d="M1,-3 L-2,2 L0,2 L-1,6 L4,0 L2,0 Z" fill="white" opacity="0.9"/>
+          <text y="46" text-anchor="middle" font-size="11" font-family="Inter,sans-serif" font-weight="600" fill="rgba(255,255,255,0.7)">EV Charging</text>
+        </g>
+
+      </svg>
+
+
+
+    </div>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item"><span class="trust-item-icon">🌿</span> 100% renewable electricity</div>
+  <div class="trust-item"><span class="trust-item-icon">📊</span> Below Ofgem price cap — always</div>
+  <div class="trust-item"><span class="trust-item-icon">⭐</span> 4.8★ on Trustpilot — 320,000+ reviews</div>
+  <div class="trust-item"><span class="trust-item-icon">🔄</span> No exit fees on flexible tariffs</div>
+  <div class="trust-item"><span class="trust-item-icon">🇬🇧</span> UK-based support team</div>
+</div>
+
+<!-- TARIFFS -->
+<div class="tariffs-section">
+  <div class="section-eyebrow">Our tariffs</div>
+  <h2 class="section-headline">Find the right plan for you</h2>
+  <p class="section-sub">Whether you want the security of a fixed deal or a flexible rate that moves with the market, we've got you covered.</p>
+
+  <div class="tariffs-grid">
+    <div class="tariff-card">
+      <div class="tariff-header">
+        <div>
+          <div class="tariff-name">NiCE Flexible</div>
+          <div class="tariff-type">Variable · No exit fees</div>
+        </div>
+      </div>
+      <div class="tariff-body">
+        <div class="tariff-price"><sup>£</sup>1,568</div>
+        <div class="tariff-price-note">Estimated annual cost · dual fuel</div>
+        <ul class="tariff-features">
+          <li>Below Ofgem price cap</li>
+          <li>No exit fees — leave anytime</li>
+          <li>100% renewable electricity</li>
+          <li>Smart meter included</li>
+          <li>Free NiCE Energy &amp; Utilities app</li>
+        </ul>
+        <a href="#" class="tariff-cta">Switch to NiCE Flexible</a>
+      </div>
+    </div>
+
+    <div class="tariff-card featured">
+      <div class="tariff-header">
+        <div>
+          <div class="tariff-name">NiCE Fixed 12</div>
+          <div class="tariff-type">12 months · Most popular</div>
+        </div>
+        <span class="tariff-badge">Best value</span>
+      </div>
+      <div class="tariff-body">
+        <div class="tariff-price"><sup>£</sup>1,489</div>
+        <div class="tariff-price-note">Estimated annual cost · dual fuel</div>
+        <ul class="tariff-features">
+          <li>Locked-in rate for 12 months</li>
+          <li>Cheaper than Flexible Octopus</li>
+          <li>100% renewable electricity</li>
+          <li>Smart meter included</li>
+          <li>Free NiCE Energy &amp; Utilities app</li>
+        </ul>
+        <a href="#" class="tariff-cta">Switch to NiCE Fixed 12</a>
+      </div>
+    </div>
+
+    <div class="tariff-card">
+      <div class="tariff-header">
+        <div>
+          <div class="tariff-name">NiCE Smart</div>
+          <div class="tariff-type">Half-hourly pricing · Smart meter required</div>
+        </div>
+      </div>
+      <div class="tariff-body">
+        <div class="tariff-price"><sup>£</sup>1,390</div>
+        <div class="tariff-price-note">Estimated annual cost if you shift usage</div>
+        <ul class="tariff-features">
+          <li>Prices update every 30 minutes</li>
+          <li>Save by using off-peak energy</li>
+          <li>Earn money when grid is stressed</li>
+          <li>Works with EVs, heat pumps, batteries</li>
+          <li>Full smart home integration</li>
+        </ul>
+        <a href="#" class="tariff-cta">Switch to NiCE Smart</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GREEN ENERGY -->
+<div class="green-strip">
+  <div class="green-strip-inner">
+    <div>
+      <div class="section-eyebrow" style="color:var(--green);">Our green commitment</div>
+      <h2>Powering homes with<br><span>clean energy</span></h2>
+      <p>Every unit of electricity we supply is matched with renewable generation — wind, solar and hydro from projects across Great Britain. And we're investing in more every year.</p>
+      <a href="#" class="btn-green">Learn about our green energy →</a>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-desc">Renewable electricity matched for every home we supply</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">2.4<span>GW</span></div>
+        <div class="stat-desc">Of generation capacity owned and operated across the UK</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">680<span>k</span></div>
+        <div class="stat-desc">Tonnes of CO₂ avoided by NiCE Energy and Utilities customers last year</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">2030</div>
+        <div class="stat-desc">Our target year to supply 10GW of new UK renewable capacity</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="services-section">
+  <div class="section-eyebrow">Beyond your bills</div>
+  <h2 class="section-headline">Everything for a greener home</h2>
+  <p class="section-sub">NiCE Energy and Utilities is more than a supplier. Get our help going fully green — from rooftop solar to an EV charger in your driveway.</p>
+
+  <div class="services-grid">
+    <a href="#" class="service-card">
+      <div class="service-icon" style="background:#e8f4fd;">🌡️</div>
+      <h3>Heat pumps</h3>
+      <p>Ditch your gas boiler. We install Mitsubishi and Vaillant heat pumps with full aftercare — and help you apply for the government's Boiler Upgrade Scheme grant.</p>
+      <span class="service-arrow">Find out more →</span>
+    </a>
+    <a href="#" class="service-card">
+      <div class="service-icon" style="background:#fef3c7;">☀️</div>
+      <h3>Solar &amp; battery</h3>
+      <p>Generate your own electricity and store what you don't use. We'll design, install and connect a system that works with your smart tariff.</p>
+      <span class="service-arrow">Get a solar quote →</span>
+    </a>
+    <a href="#" class="service-card">
+      <div class="service-icon" style="background:#e6faf4;">🚗</div>
+      <h3>Electric vehicles</h3>
+      <p>Charge overnight at off-peak prices. Our NiCE Smart tariff schedules your charge automatically — saving the average EV driver £400 a year.</p>
+      <span class="service-arrow">Explore EV tariffs →</span>
+    </a>
+    <a href="#" class="service-card">
+      <div class="service-icon" style="background:#f3e8ff;">🔌</div>
+      <h3>Smart home</h3>
+      <p>Connect your thermostat, EV charger and battery storage to the NiCE app. Shift your energy use automatically to when it's cheapest and greenest.</p>
+      <span class="service-arrow">See compatible devices →</span>
+    </a>
+  </div>
+</div>
+
+<!-- HOW TO SWITCH -->
+<div class="switch-section">
+  <div class="section-eyebrow">Switching is simple</div>
+  <h2 class="section-headline">Live on NiCE Energy and Utilities in four steps</h2>
+  <p class="section-sub">We take care of every detail. You'll never need to contact your old supplier.</p>
+
+  <div class="switch-steps">
+    <div class="switch-step">
+      <div class="step-circle">1</div>
+      <h4>Get a quote</h4>
+      <p>Enter your postcode and share a few details about your home. Takes two minutes.</p>
+    </div>
+    <div class="switch-step">
+      <div class="step-circle">2</div>
+      <h4>Choose your tariff</h4>
+      <p>Pick the plan that suits your lifestyle — fixed, flexible, or smart half-hourly.</p>
+    </div>
+    <div class="switch-step">
+      <div class="step-circle">3</div>
+      <h4>We handle the switch</h4>
+      <p>We notify your current supplier and manage the whole process. No calls needed.</p>
+    </div>
+    <div class="switch-step">
+      <div class="step-circle">4</div>
+      <h4>Start saving</h4>
+      <p>You're live on NiCE Energy and Utilities — track your usage and savings in the app from day one.</p>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="reviews-section">
+  <div class="reviews-header">
+    <div>
+      <div class="section-eyebrow">Customer reviews</div>
+      <h2 class="section-headline">What our customers say</h2>
+    </div>
+    <div class="trustpilot-badge">
+      <div>
+        <div class="tp-stars">★★★★★</div>
+        <div style="font-size:11px;color:var(--muted);">Trustpilot</div>
+      </div>
+      <div>
+        <div class="tp-score">4.8</div>
+        <div class="tp-label">320,000+ reviews</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Switched in literally five minutes</div>
+      <p class="review-body">"I'd been putting off switching for years because I assumed it would be a nightmare. The NiCE app walked me through everything and I was done before my morning coffee."</p>
+      <div class="review-author"><strong>Sarah M.</strong> · Leeds · Switched January 2026</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Smart tariff saves us a fortune</div>
+      <p class="review-body">"We charge our EV overnight and run the dishwasher after 10pm. The app does it automatically now. We've saved about £65 a month since we made the switch."</p>
+      <div class="review-author"><strong>James &amp; Priya T.</strong> · Bristol · Switched October 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Customer service is genuinely brilliant</div>
+      <p class="review-body">"I had a billing question and someone answered in under three minutes. They sorted it while we were on the call. Every other energy company I've used has been the opposite."</p>
+      <div class="review-author"><strong>Donna F.</strong> · Glasgow · Switched March 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- SMART HOME -->
+<div class="smart-section">
+  <div class="smart-inner">
+    <div>
+      <div class="section-eyebrow" style="color:var(--plum);">The NiCE app</div>
+      <h2>Your energy, <span>in your pocket</span></h2>
+      <p>Track exactly what you're using, see your bills before they arrive, and let the app automatically shift your consumption to cheaper, greener windows.</p>
+      <div class="smart-features">
+        <div class="sf-item">
+          <div class="sf-icon">📊</div>
+          <div class="sf-text">
+            <h4>Live usage tracking</h4>
+            <p>See your electricity and gas use in real time, broken down by hour, day or month.</p>
+          </div>
+        </div>
+        <div class="sf-item">
+          <div class="sf-icon">🤖</div>
+          <div class="sf-text">
+            <h4>Automatic smart scheduling</h4>
+            <p>Connect your EV, heat pump or washing machine — the app does the rest.</p>
+          </div>
+        </div>
+        <div class="sf-item">
+          <div class="sf-icon">💬</div>
+          <div class="sf-text">
+            <h4>Message us in-app</h4>
+            <p>Chat directly with our UK team — no phone queues, no holding music.</p>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="btn-green" style="background:var(--plum);">Download the app →</a>
+    </div>
+    <div>
+      <div class="app-mockup">
+        <div class="app-topbar">
+          <div class="app-topbar-title">NiCE Energy &amp; Utilities</div>
+          <div class="app-topbar-sub">Good morning, Helen 👋</div>
+        </div>
+        <div class="app-body">
+          <div class="app-usage-label">This month so far</div>
+          <div class="app-usage-num">£<span>47</span><span class="app-usage-unit">.20</span></div>
+          <div class="app-saving">
+            <span class="app-saving-icon">🌱</span>
+            <span class="app-saving-text">You've saved £23 vs last month</span>
+          </div>
+          <div class="app-usage-label" style="margin-top:12px;">Daily usage this week</div>
+          <div class="app-bars">
+            <div class="app-bar" style="height:40%"></div>
+            <div class="app-bar" style="height:60%"></div>
+            <div class="app-bar" style="height:50%"></div>
+            <div class="app-bar" style="height:75%"></div>
+            <div class="app-bar active" style="height:45%"></div>
+            <div class="app-bar" style="height:30%;opacity:0.4"></div>
+            <div class="app-bar" style="height:20%;opacity:0.4"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:6px;">
+            <span style="font-size:10px;color:var(--muted);">Mon</span>
+            <span style="font-size:10px;color:var(--muted);">Tue</span>
+            <span style="font-size:10px;color:var(--muted);">Wed</span>
+            <span style="font-size:10px;color:var(--muted);">Thu</span>
+            <span style="font-size:10px;color:var(--muted);font-weight:700;">Today</span>
+            <span style="font-size:10px;color:var(--muted);opacity:0.5">Sat</span>
+            <span style="font-size:10px;color:var(--muted);opacity:0.5">Sun</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Ready to switch?</h2>
+  <p>Join 4.1 million homes on cheaper, greener energy. Takes five minutes — we'll handle your old supplier.</p>
+  <div class="cta-box">
+    <input class="cta-input" type="text" placeholder="Enter your postcode"/>
+    <button class="cta-submit">Get a quote →</button>
+  </div>
+  <p class="cta-note">No credit check &nbsp;·&nbsp; No exit fees on flexible tariff &nbsp;·&nbsp; Cancel anytime</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 864.3 400.99" style="height:20px;width:auto;">
+        <path fill="#3694fd" d="M333.62,62.55c-18.86-1.19-34.4,14.35-33.21,33.21.98,15.55,13.6,28.17,29.15,29.15,18.86,1.19,34.4-14.35,33.21-33.21-.98-15.55-13.6-28.17-29.15-29.15Z"/>
+        <path fill="#fff" d="M265.33,82.11h-50.27c-1.66,0-3,1.34-3,3v147.41c0,1.02-1.35,1.39-1.86.5L123.2,83.61c-.54-.92-1.52-1.49-2.59-1.49h-55.12c-1.66,0-3,1.34-3,3v244.74c0,1.66,1.34,3,3,3h50.27c1.66,0,3-1.34,3-3v-146.82c0-1.02,1.35-1.39,1.86-.5l87,148.84c.54.92,1.52,1.49,2.59,1.49h55.13c1.66,0,3-1.34,3-3V85.11c0-1.66-1.34-3-3-3Z"/>
+        <path fill="#fff" d="M353.85,141.37c-7.03,1.51-14.5,2.33-22.27,2.33s-15.24-.82-22.27-2.33c-1.87-.4-3.62,1.02-3.62,2.93v185.55c0,1.66,1.34,3,3,3h45.78c1.66,0,3-1.34,3-3v-185.55c0-1.91-1.76-3.33-3.62-2.93Z"/>
+        <path fill="#fff" d="M798.81,286.94h-104.66c-.55,0-1-.45-1-1v-54.5c0-.55.45-1,1-1h85.42c1.66,0,3-1.34,3-3v-39.91c0-1.66-1.34-3-3-3h-85.42c-.55,0-1-.45-1-1v-54.5c0-.55.45-1,1-1h104.66c1.66,0,3-1.34,3-3v-39.91c0-1.66-1.34-3-3-3h-158.92c-1.66,0-3,1.34-3,3v244.74c0,1.66,1.34,3,3,3h158.92c1.66,0,3-1.34,3-3v-39.91c0-1.66-1.34-3-3-3Z"/>
+        <path fill="#fff" d="M601.92,239.96h-53.14c-1.44,0-2.69,1.02-2.95,2.43-2.46,13.53-7.09,24.33-13.89,32.37-7.65,9.07-18.49,13.6-32.5,13.6-10.78,0-20.05-3.29-27.81-9.89-7.76-6.59-13.74-15.89-17.95-27.9-4.2-12.01-6.31-26.25-6.31-42.73,0-16.01,1.99-30.13,5.98-42.38,3.99-12.24,9.91-21.77,17.79-28.6,7.87-6.83,17.41-10.24,28.62-10.24,12.72,0,23.07,4.24,31.04,12.71,6.99,7.43,11.82,17.39,14.51,29.87.29,1.37,1.52,2.34,2.92,2.34h52.94c1.88,0,3.29-1.71,2.95-3.56-5.27-28.79-16.07-51.06-32.42-66.79-17.14-16.48-41.12-24.72-71.95-24.72-22.42,0-41.93,5.42-58.53,16.24-16.6,10.83-29.38,26.08-38.32,45.73-8.95,19.66-13.42,42.79-13.42,69.39s4.69,51.03,14.07,70.45c9.38,19.42,22.31,34.32,38.81,44.67,16.49,10.36,35.3,15.54,56.43,15.54,20.48,0,38.05-3.88,52.71-11.65,14.66-7.77,26.52-19.01,35.57-33.73,8.49-13.79,14.42-30.34,17.79-49.63.32-1.85-1.08-3.54-2.95-3.54Z"/>
+      </svg>
+      <span style="display:block;font-size:12px;font-weight:600;color:var(--green);margin-top:6px;letter-spacing:0.04em;">Energy &amp; Utilities</span>
+      <p class="footer-brand-desc">Cheaper, greener energy for homes and businesses across Great Britain. Licensed by Ofgem. Registered in England &amp; Wales No. 12847631.</p>
+      <div class="footer-ofgem">🏛️ &nbsp;Ofgem licensed supplier</div>
+    </div>
+    <div class="footer-col">
+      <h4>Energy</h4>
+      <ul>
+        <li><a href="#">NiCE Flexible</a></li>
+        <li><a href="#">NiCE Fixed 12</a></li>
+        <li><a href="#">NiCE Smart</a></li>
+        <li><a href="#">Business energy</a></li>
+        <li><a href="#">Moving home</a></li>
+        <li><a href="#">Compare tariffs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">Heat pumps</a></li>
+        <li><a href="#">Solar panels</a></li>
+        <li><a href="#">Battery storage</a></li>
+        <li><a href="#">EV tariff &amp; chargers</a></li>
+        <li><a href="#">Smart meters</a></li>
+        <li><a href="#">The NiCE app</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Help centre</a></li>
+        <li><a href="#">Submit a meter read</a></li>
+        <li><a href="#">Priority Services Register</a></li>
+        <li><a href="#">Report a power cut</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Complaints</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NiCE Energy and Utilities Ltd. All rights reserved.</span>
+    <span>Electricity and gas are supplied by NiCE Energy and Utilities Ltd, Ofgem licence reference ES000842.</span>
+    <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; <a href="#">Cookies</a> &nbsp;·&nbsp; <a href="#">Accessibility</a></span>
+  </div>
+</footer>
+
+
+
+<script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
+<script>
+	initWebchat(
+		"https://endpoint-trial.cognigy.ai/7defe970b2bfb41f89500b7a258d06d56517a6994b24645ebf9082a8ab7f99b1"
+	);
+</script>
+
+</body>
+</html>
