@@ -825,29 +825,8 @@
     .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
     .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
 
-
-
-
-
-
-
-
-
- 50%{opacity:0.3;} }
-
-
-
-
-
-
     /* ── RESPONSIVE ── */
-    @media (max-width: 1280px) {
-  
-    }
     @media (max-width: 1024px) {
-      .page-layout { flex-direction: column; height: auto; overflow: visible; }
-      .page-main { overflow-y: visible; }
-  
       .tariffs-grid, .services-grid { grid-template-columns: 1fr 1fr; }
       .switch-steps { grid-template-columns: 1fr 1fr; }
       .switch-steps::before { display: none; }
@@ -923,19 +902,16 @@
       <!-- Animated SVG energy flow diagram -->
       <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" class="flow-svg">
         <defs>
-          <!-- Green flow gradient -->
           <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#00c48c" stop-opacity="0"/>
             <stop offset="50%" stop-color="#00c48c" stop-opacity="1"/>
             <stop offset="100%" stop-color="#00c48c" stop-opacity="0"/>
           </linearGradient>
-          <!-- Vertical flow gradient -->
           <linearGradient id="flowGradV" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stop-color="#00c48c" stop-opacity="0"/>
             <stop offset="50%" stop-color="#00c48c" stop-opacity="1"/>
             <stop offset="100%" stop-color="#00c48c" stop-opacity="0"/>
           </linearGradient>
-          <!-- Glow filter -->
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="blur"/>
             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -944,28 +920,19 @@
             <feGaussianBlur stdDeviation="5" result="blur"/>
             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
-          <!-- Dash pattern for flow lines -->
           <marker id="arrowGreen" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
             <path d="M0,0 L6,3 L0,6 Z" fill="#00c48c" opacity="0.6"/>
           </marker>
         </defs>
 
-        <!-- ── BACKGROUND NODE GLOW ── -->
         <circle cx="210" cy="185" r="70" fill="rgba(0,196,140,0.04)"/>
         <circle cx="210" cy="185" r="110" fill="rgba(0,196,140,0.02)"/>
 
-        <!-- ── CONNECTOR LINES ── -->
-        <!-- Solar → Grid -->
         <line x1="90" y1="75" x2="185" y2="165" stroke="rgba(0,196,140,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
-        <!-- Wind → Grid -->
         <line x1="330" y1="75" x2="235" y2="165" stroke="rgba(0,196,140,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
-        <!-- Grid → Home -->
         <line x1="185" y1="210" x2="90" y2="300" stroke="rgba(0,196,140,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
-        <!-- Grid → EV -->
         <line x1="235" y1="210" x2="330" y2="300" stroke="rgba(0,196,140,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
 
-        <!-- ── ANIMATED FLOW DOTS ── -->
-        <!-- Solar → Grid -->
         <circle r="4" fill="#f59e0b" filter="url(#glow)" opacity="0.9">
           <animateMotion dur="2.2s" repeatCount="indefinite" begin="0s">
             <mpath href="#path-solar-grid"/>
@@ -974,7 +941,6 @@
         </circle>
         <path id="path-solar-grid" d="M90,75 L185,165" fill="none"/>
 
-        <!-- Wind → Grid -->
         <circle r="4" fill="#3694fc" filter="url(#glow)" opacity="0.9">
           <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.5s">
             <mpath href="#path-wind-grid"/>
@@ -983,7 +949,6 @@
         </circle>
         <path id="path-wind-grid" d="M330,75 L235,165" fill="none"/>
 
-        <!-- Grid → Home -->
         <circle r="3.5" fill="#00c48c" filter="url(#glow)" opacity="0.9">
           <animateMotion dur="2s" repeatCount="indefinite" begin="0.9s">
             <mpath href="#path-grid-home"/>
@@ -992,7 +957,6 @@
         </circle>
         <path id="path-grid-home" d="M185,210 L90,300" fill="none"/>
 
-        <!-- Grid → EV -->
         <circle r="3.5" fill="#00c48c" filter="url(#glow)" opacity="0.9">
           <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.2s">
             <mpath href="#path-grid-ev"/>
@@ -1001,7 +965,6 @@
         </circle>
         <path id="path-grid-ev" d="M235,210 L330,300" fill="none"/>
 
-        <!-- ── SOLAR NODE (top-left) ── -->
         <g transform="translate(90,75)">
           <circle r="34" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" stroke-width="1.5"/>
           <circle r="34" fill="none" stroke="rgba(245,158,11,0.15)" stroke-width="1">
@@ -1020,7 +983,6 @@
           <text y="50" text-anchor="middle" font-size="11" font-family="Inter,sans-serif" font-weight="600" fill="rgba(255,255,255,0.7)">Solar</text>
         </g>
 
-        <!-- ── WIND NODE (top-right) ── -->
         <g transform="translate(330,75)">
           <circle r="34" fill="rgba(54,148,252,0.1)" stroke="rgba(54,148,252,0.3)" stroke-width="1.5"/>
           <circle r="34" fill="none" stroke="rgba(54,148,252,0.15)" stroke-width="1">
@@ -1040,7 +1002,6 @@
           <text y="50" text-anchor="middle" font-size="11" font-family="Inter,sans-serif" font-weight="600" fill="rgba(255,255,255,0.7)">Wind</text>
         </g>
 
-        <!-- ── CENTRAL SMART GRID NODE ── -->
         <g transform="translate(210,188)">
           <circle r="48" fill="none" stroke="rgba(0,196,140,0.15)" stroke-width="1">
             <animate attributeName="r" values="48;60;48" dur="2.5s" repeatCount="indefinite"/>
@@ -1051,7 +1012,6 @@
           <text y="60" text-anchor="middle" font-size="12" font-family="Inter,sans-serif" font-weight="700" fill="white">Smart Grid</text>
         </g>
 
-        <!-- ── HOME NODE (bottom-left) ── -->
         <g transform="translate(90,300)">
           <circle r="30" fill="rgba(0,196,140,0.1)" stroke="rgba(0,196,140,0.3)" stroke-width="1.5"/>
           <path d="M0,-16 L-14,0 L-10,0 L-10,12 L10,12 L10,0 L14,0 Z" fill="rgba(0,196,140,0.8)"/>
@@ -1059,7 +1019,6 @@
           <text y="46" text-anchor="middle" font-size="11" font-family="Inter,sans-serif" font-weight="600" fill="rgba(255,255,255,0.7)">Your Home</text>
         </g>
 
-        <!-- ── EV NODE (bottom-right) ── -->
         <g transform="translate(330,300)">
           <circle r="30" fill="rgba(54,148,252,0.1)" stroke="rgba(54,148,252,0.3)" stroke-width="1.5"/>
           <path d="M-14,4 L-10,-6 L10,-6 L14,4 Z" fill="rgba(54,148,252,0.7)"/>
@@ -1071,8 +1030,6 @@
         </g>
 
       </svg>
-
-
 
     </div>
   </div>
@@ -1432,13 +1389,22 @@
   </div>
 </footer>
 
-
-
+<!-- Webchat widget -->
 <script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
 <script>
-	initWebchat(
-		"https://endpoint-trial.cognigy.ai/7defe970b2bfb41f89500b7a258d06d56517a6994b24645ebf9082a8ab7f99b1"
-	);
+  initWebchat(
+    "https://endpoint-trial.cognigy.ai/7defe970b2bfb41f89500b7a258d06d56517a6994b24645ebf9082a8ab7f99b1"
+  );
+</script>
+
+<!-- Click-to-call (WebRTC) widget -->
+<script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
+<script>
+  addEventListener("load", (event) => {
+    if (window.initWebRTCWidget) {
+      window.initWebRTCWidget("https://endpoint-trial.cognigy.ai/c3a0285366acb581a7974eb7adcbbe6321f6c835ab35cd825d64fb43fdcef5aa");
+    }
+  });
 </script>
 
 </body>
